@@ -6,23 +6,7 @@ block content
   div(class="container-fluid")
         div(class="row")
             -
-                let Tshirt = [
-                    {
-                        "brand": "AERO",
-                        "material": "cotton",
-                        "cost": 10
-                    },
-                    {
-                        "brand": "PUMA",
-                        "material": "cotton",
-                        "cost": 12
-                    },
-                    {
-                        "brand": "ADDIDAS",
-                        "material": "cotton",
-                        "cost": 13
-                    },                   
-                ]
+                let Tshirt = results            
             each v,index in Tshirt
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.brand}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.material}

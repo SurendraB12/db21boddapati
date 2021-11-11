@@ -1,9 +1,28 @@
 var Tshirt = require('../models/Tshirt'); 
  
-// List of all Tshirts 
-exports.Tshirt_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: Tshirt list'); 
-}; 
+// List of all Tshirt
+exports.Tshirt_list = async function (req, res) {
+    try {
+        theTshirt = await Tshirt.find();
+        res.send(theTshirt);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
+// VIEWS
+// Handle a show all view
+exports.Tshirt_view_all_Page = async function (req, res) {
+    try {
+        theTshirt = await Tshirt.find();
+        res.render('Tshirt', { title: 'Tshirt Search Results', results: theTshirt });
+    }
+    catch (err) {
+        res.send(`{"error": ${err}}`)
+        res.status(500);
+    }
+};
  
 // for a specific Tshirt. 
 exports.Tshirt_detail = function(req, res) { 
