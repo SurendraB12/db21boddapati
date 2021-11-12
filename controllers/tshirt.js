@@ -28,7 +28,7 @@ exports.Tshirt_view_all_Page = async function (req, res) {
 exports.tshirt_detail = async function(req, res) {
     console.log("detail" + req.params.id)
     try {
-    result = await tshirt.findById( req.params.id)
+    result = await Tshirt.findById( req.params.id)
     res.send(result)
     } catch (error) {
     res.status(500)
