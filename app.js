@@ -4,10 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const connectionString = process.env.MONGO_CON
+const connectionString = 'mongodb+srv://admin:Bsv8008183sur@cluster0.syjud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose = require('mongoose');
-mongoose.connect(connectionString,
-  { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
