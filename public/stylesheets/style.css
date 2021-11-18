@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.Tshirt_class{
+  background-color: rgb(165, 116, 42);
+  width: 50%;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+.Tshirt_btn{
+  background-color: rgba(169, 169, 169, 0.795);
+  width: 100%;
+  margin: 15px 0;
+}
+
+.Tshirt_input{
+  margin: 25px 0 !important;
+}
+
+.Tshirt_label{
+  margin:20px 0;
+  text-transform: uppercase;
+}
