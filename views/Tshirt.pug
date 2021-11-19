@@ -6,13 +6,22 @@ block content
   div(class="container-fluid")
         div(class="row")
             -
-                let Tshirt = results            
-            each v,index in Tshirt
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.brand}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.material}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{v.cost}
-  script.                
-    function buy(itemNo)
-    {
-        alert(`you purchased Item ${itemNo+1}`)
-    }
+                let Tshirt = results
+                
+  div(class="container-fluid") 
+    div(class="row  m-1") 
+      each item in Tshirt 
+       - let destination = `dispatch(\"/Tshirt/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Tshirt #{item.brand}(#{item.material}) is #{item.cost}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
+            
+        script.                
+            function buy(itemNo)
+            {
+                  alert(`you purchased Item ${itemNo+1}`)
+            }
+        script. 
+            function dispatch(path)
+            { 
+              window.location.href=path 
+            }
