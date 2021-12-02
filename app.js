@@ -6,6 +6,8 @@ var logger = require('morgan');
 var passport = require('passport'); 
 var LocalStrategy = require('passport-local').Strategy; 
 
+var app = express();
+
 passport.use(new LocalStrategy( 
   function(username, password, done) { 
     Account.findOne({ username: username }, function (err, user) { 
@@ -23,6 +25,9 @@ passport.use(new LocalStrategy(
 const connectionString = 'mongodb+srv://admin:Bsv8008183sur@cluster0.syjud.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose = require('mongoose');
 mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+
+app.use(passport.initialize()); 
+app.use(passport.session()); 
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
