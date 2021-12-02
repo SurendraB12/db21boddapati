@@ -15,16 +15,14 @@ const secured = (req, res, next) => {
 /* GET costumes */
 router.get('/', Tshirt_controlers.Tshirt_view_all_Page);
 
-router.get('/detail', Tshirt_controlers.Tshirt_view_one_Page);
-
+router.get('/detail', secured, Tshirt_controlers.Tshirt_view_one_Page);
 
 // /* GET create costume page */
 router.get('/create', secured, Tshirt_controlers.Tshirt_create_Page);
 
+router.get('/update', secured, Tshirt_controlers.Tshirt_update_Page);
 
-router.get('/update', secured, Tshirt_controlers.Tshirt_update_Page); 
-
-router.get('/delete', secured, Tshirt_controlers.Tshirt_delete_Page); 
+router.get('/delete', secured, Tshirt_controlers.Tshirt_delete_Page);
 /* GET details with id of Tshirt page */
 router.get('/Tshirt/:id', Tshirt_controlers.Tshirt_detail);
 /* DELETE details with id of Tshirt page */

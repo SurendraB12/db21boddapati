@@ -2,25 +2,33 @@ extends layout
 
 block content
   h1= title
-  p Welcome to the Tshirt pug
-  div(class="container-fluid")
-        div(class="row")
-            - let Tshirt = results
-                
-  div(class="container-fluid") 
-    div(class="row  m-1") 
-      each item in Tshirt 
-       - let destination = `dispatch(\"/Tshirt/update?id=${item._id}\")` 
-        div(class="row-sm-2", class="m-1") Tshirt #{item.brand}(#{item.material}) is #{item.cost}
-            button.btn( class="btn-primary ml-1", onclick= destination) Update
-            
-        script.                
-            function buy(itemNo)
-            {
-                  alert(`you purchased Item ${itemNo+1}`)
-            }
-        script. 
-            function dispatch(path)
-            { 
-              window.location.href=path 
-            }
+  - let createView = `dispatch(\"Tshirt/create\")`
+  button.btn(class="btn-primary m1-2", onclick=createView) Create
+  - let results = theTshirt
+  div(class="container-fuild")
+    div(class="row")
+      each item in results
+       - let updateView = `dispatch(\"/Tshirt/update?id=${item._id}\")`
+       - let detailView = `dispatch(\"/Tshirt/detail?id=${item._id}\")`
+       - let deleteView = `dispatch(\"/Tshirt/delete?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") Item is #{item.brand} with material is #{item.material} and cost is #{item.cost} </br>
+         button.btn(class="btn-primary ml-2", onclick= updateView) Update
+         button.btn(class="btn-primary ml-2", onclick= detailView) Detail
+         button.btn(class="btn-danger ml-2", onclick= deleteView) Delete
+
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }
+
+//-
+      each result,index in results
+        div(class = "col-sm-2" id=index onclick=`buy(${index})`) 
+          p #{result.itemname}
+          p #{result.price}
+          p #{result.quantity}
+              
+  script.
+    function buy(element){
+      alert(`You purchased item is ${element+1}.`)
+    }
